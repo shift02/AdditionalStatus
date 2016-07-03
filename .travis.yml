@@ -1,1 +1,7 @@
 language: java
+install:
+-DEFAULT_JVM_OPTS="-Dfile.encoding=UTF-8"
+- ./gradlew setupDecompWorkspace
+script:
+-DEFAULT_JVM_OPTS="-Dfile.encoding=UTF-8"
+- ./gradlew build

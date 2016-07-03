@@ -1,5 +1,9 @@
 language: java
+jdk: oraclejdk7
+env:
+  matrix:
+    - DEFAULT_JVM_OPTS="-Dfile.encoding=UTF-8"
 install:
--DEFAULT_JVM_OPTS="-Dfile.encoding=UTF-8" ./gradlew setupDecompWorkspace
+- ./gradlew setupDecompWorkspace
 script:
--DEFAULT_JVM_OPTS="-Dfile.encoding=UTF-8" ./gradlew build
+- ./gradlew build

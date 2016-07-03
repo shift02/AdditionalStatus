@@ -1,4 +1,4 @@
-ï»¿//For those who want the bleeding edge
+//For those who want the bleeding edge
 buildscript {
     repositories {
         jcenter()
@@ -13,10 +13,10 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-//æ–‡å­—ã‚³ãƒ¼ãƒ‰
+//•¶šƒR[ƒh
 tasks.withType(AbstractCompile)*.options*.encoding = tasks.withType(GroovyCompile)*.groovyOptions*.encoding = 'UTF-8'
 
-//ä¾å­˜é–¢ä¿‚
+//ˆË‘¶ŠÖŒW
 assemble.dependsOn setupDecompWorkspace
 
 /*

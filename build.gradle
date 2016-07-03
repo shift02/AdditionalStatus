@@ -1,5 +1,4 @@
-Ôªø
-// For those who want the bleeding edge
+//For those who want the bleeding edge
 buildscript {
     repositories {
         jcenter()
@@ -14,8 +13,11 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-//ÊñáÂ≠ó„Ç≥„Éº„Éâ
+//ï∂éöÉRÅ[Éh
 tasks.withType(AbstractCompile)*.options*.encoding = tasks.withType(GroovyCompile)*.groovyOptions*.encoding = 'UTF-8'
+
+//àÀë∂ä÷åW
+assemble.dependsOn setupDecompWorkspace
 
 /*
 // for people who want stable - not yet functional for MC 1.8.8 - we require the forgegradle 2.1 snapshot

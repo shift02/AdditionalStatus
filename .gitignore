@@ -15,3 +15,5 @@ Thumbs.db
 # Gradle
 .gradle
 !gradle-wrapper.jar
+AdditionalStatus_Client.launch
+AdditionalStatus_Server.launch

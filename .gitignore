@@ -1,0 +1,17 @@
+/bin/
+
+# Eclipse
+.project
+.classpath
+.settings
+eclipse/
+
+run/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Gradle
+.gradle
+!gradle-wrapper.jar

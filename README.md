@@ -5,3 +5,12 @@
 
 Add moisture and stamina to Minecraft
 
+##Overview 概要
+
+This Mod adds the status of stamina and moisture to the player
+
+このModはプレイヤーに水分とスタミナの概念を追加します
+
+##License ライセンス
+
+[![MMPL_J](https://img.shields.io/badge/license-MMPL__%20J-blue.svg)](http://tsoft-web.com/nokiyen/minecraft/modding/MMPL_J)

@@ -17,7 +17,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 tasks.withType(AbstractCompile)*.options*.encoding = tasks.withType(GroovyCompile)*.groovyOptions*.encoding = 'UTF-8'
 
 //ˆË‘¶ŠÖŒW
-assemble.dependsOn setupDecompWorkspace
+//assemble.dependsOn setupDecompWorkspace
 
 /*
 // for people who want stable - not yet functional for MC 1.8.8 - we require the forgegradle 2.1 snapshot

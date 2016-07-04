@@ -6,6 +6,7 @@ import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -134,6 +135,7 @@ public class HUDEventHandler {
 		// System.out.println("StatList");
 
 		mc.mcProfiler.startSection("moisture");
+		GlStateManager.enableBlend();
 
 		bind(icons);
 
@@ -192,6 +194,7 @@ public class HUDEventHandler {
 			}
 		}
 
+		GlStateManager.disableBlend();
 		mc.mcProfiler.endSection();
 		bind(Gui.ICONS);
 
@@ -203,6 +206,7 @@ public class HUDEventHandler {
 		visibleStamina = false;
 
 		mc.mcProfiler.startSection("stamina");
+		GlStateManager.enableBlend();
 
 		bind(icons);
 
@@ -257,6 +261,7 @@ public class HUDEventHandler {
 			}
 		}
 
+		GlStateManager.disableBlend();
 		mc.mcProfiler.endSection();
 		bind(Gui.ICONS);
 

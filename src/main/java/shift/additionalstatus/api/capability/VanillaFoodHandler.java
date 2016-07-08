@@ -11,6 +11,13 @@ import shift.additionalstatus.api.AdditionalStatusAPI;
 import shift.additionalstatus.api.capability.template.MoistureHandler;
 import shift.additionalstatus.capability.EntityPlayerManager;
 
+/**
+ * バニラのアイテムにステータスを追加するためのHandler。<br>
+ * 既存のアイテムに追加するためのサンプル
+ * 
+ * @author Shift02ss
+ *
+ */
 public class VanillaFoodHandler {
 	
 	public ResourceLocation moisture = new ResourceLocation(AdditionalStatusAPI.MODID, "IMoistureHandler");

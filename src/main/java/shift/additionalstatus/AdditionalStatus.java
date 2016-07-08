@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import shift.additionalstatus.api.AdditionalStatusAPI;
 import shift.additionalstatus.api.capability.CapabilityMoistureHandler;
+import shift.additionalstatus.api.capability.CapabilityStaminaHandler;
 import shift.additionalstatus.capability.AdditionalPlayerData;
 import shift.additionalstatus.capability.EntityPlayerManager;
 import shift.additionalstatus.packet.ASPacketHandler;
@@ -43,6 +44,7 @@ public class AdditionalStatus {
 		ASEvents.preInit(event);
 		
 		CapabilityMoistureHandler.register();
+		CapabilityStaminaHandler.register();
 
 	}
 

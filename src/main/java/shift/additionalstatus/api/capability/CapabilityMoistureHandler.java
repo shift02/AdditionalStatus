@@ -8,11 +8,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTank;
-import net.minecraftforge.fluids.IFluidTank;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 import shift.additionalstatus.api.capability.template.MoistureHandler;
 
 public class CapabilityMoistureHandler {
@@ -41,7 +36,7 @@ public class CapabilityMoistureHandler {
                 NBTTagCompound tags = (NBTTagCompound) nbt;
                 instance.setMoisture(tags.getInteger("Moisture"));
                 instance.setMoistureSaturation(tags.getFloat("MoistureSaturation"));
-                instance.setMoistureSaturation(tags.getFloat("MoistureExhaustion"));
+                instance.setMoistureExhaustion(tags.getFloat("MoistureExhaustion"));
                 
             }
         }, new Callable<IMoistureHandler>()

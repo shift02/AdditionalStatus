@@ -1,6 +1,8 @@
 package shift.additionalstatus.api;
 
 import net.minecraft.entity.player.EntityPlayer;
+import shift.additionalstatus.api.capability.ItemDrink;
+import shift.additionalstatus.api.capability.VanillaFoodHandler;
 
 public class AdditionalStatusAPI {
 
@@ -12,14 +14,13 @@ public class AdditionalStatusAPI {
 	// メモ MAX水分 20 , MAXスタミナ 100
 
 	/**
-	 * addMoistureStats プレイヤーの水分ゲージを回復します
+	 * addMoistureStats プレイヤーの水分ゲージを回復します <br>
+	 * ※ 飲み物を飲んだ時の回復処理でこのメソッドを使用しないでください 
+	 *   {@link ItemDrink}や{@link VanillaFoodHandler}参照
 	 * 
-	 * @param entityPlayer
-	 *            プレイヤー
-	 * @param par1
-	 *            水分
-	 * @param par2
-	 *            隠し水分
+	 * @param entityPlayer プレイヤー
+	 * @param par1 水分
+	 * @param par2 隠し水分
 	 */
 	public static void addMoistureStats(EntityPlayer entityPlayer, int par1, float par2) {
 		playerManager.addMoistureStats(entityPlayer, par1, par2);
@@ -32,10 +33,8 @@ public class AdditionalStatusAPI {
 	/**
 	 * addMoistureExhaustion プレイヤーの水分ゲージを減らします
 	 * 
-	 * @param entityPlayer
-	 *            プレイヤー
-	 * @param amount
-	 *            減らす量(4.0fで1)
+	 * @param entityPlayer プレイヤー
+	 * @param amount 減らす量(4.0fで1)
 	 */
 	public static void addMoistureExhaustion(EntityPlayer entityPlayer, float amount) {
 		playerManager.addMoistureExhaustion(entityPlayer, amount);
@@ -44,12 +43,9 @@ public class AdditionalStatusAPI {
 	/**
 	 * addMoistureStats プレイヤーのスタミナゲージを回復します
 	 * 
-	 * @param entityPlayer
-	 *            プレイヤー
-	 * @param par1
-	 *            スタミナ
-	 * @param par2
-	 *            隠しスタミナ
+	 * @param entityPlayer プレイヤー
+	 * @param par1 スタミナ
+	 * @param par2 隠しスタミナ
 	 */
 	public static void addStaminaStats(EntityPlayer entityPlayer, int par1, float par2) {
 		playerManager.addStaminaStats(entityPlayer, par1, par2);
@@ -62,10 +58,8 @@ public class AdditionalStatusAPI {
 	/**
 	 * addMoistureExhaustion プレイヤーのスタミナゲージを減らします
 	 * 
-	 * @param entityPlayer
-	 *            プレイヤー
-	 * @param amount
-	 *            減らす量(4.0fで1)
+	 * @param entityPlayer プレイヤー
+	 * @param amount 減らす量(4.0fで1)
 	 */
 	public static void addStaminaExhaustion(EntityPlayer entityPlayer, float amount) {
 		playerManager.addStaminaExhaustion(entityPlayer, amount);

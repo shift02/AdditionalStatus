@@ -2,7 +2,10 @@ package shift.additionalstatus.event;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -16,7 +19,9 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import shift.additionalstatus.api.AdditionalStatusAPI;
 import shift.additionalstatus.api.capability.CapabilityMoistureHandler;
+import shift.additionalstatus.api.capability.CapabilityStaminaHandler;
 import shift.additionalstatus.api.capability.IMoistureHandler;
+import shift.additionalstatus.api.capability.IStaminaHandler;
 import shift.additionalstatus.capability.EntityPlayerManager;
 
 public class PlayerStatusEventHandler {
@@ -34,7 +39,49 @@ public class PlayerStatusEventHandler {
         
         IMoistureHandler m = item.getCapability(CapabilityMoistureHandler.MOISTURE_HANDLER_CAPABILITY, null);
         AdditionalStatusAPI.playerManager.addMoistureStats(player, m.getMoisture(), m.getMoistureSaturation());
+        AdditionalStatusAPI.playerManager.addMoistureExhaustion(player, m.getMoistureExhaustion());
         
+    }
+    
+    /**バニラの食べ物を食べた時の動作*/
+	/** 食べ物を食べた時の動作 */
+    @SubscribeEvent
+    public void onPlayerUseItemStaminaEvent(LivingEntityUseItemEvent.Finish event) {
+
+        ItemStack item = event.getItem();
+        EntityPlayer player = (EntityPlayer) event.getEntity();
+        if(player.getEntityWorld().isRemote)return;
+        
+        if(!item.hasCapability(CapabilityStaminaHandler.STAMINA_HANDLER_CAPABILITY, null))return;
+        
+        IStaminaHandler m = item.getCapability(CapabilityStaminaHandler.STAMINA_HANDLER_CAPABILITY, null);
+        AdditionalStatusAPI.playerManager.addStaminaStats(player, m.getStamina(), m.getStaminaSaturation());
+        AdditionalStatusAPI.playerManager.addStaminaExhaustion(player, m.getStaminaExhaustion());
+        
+    }
+    
+    @SubscribeEvent
+    public void onPlayerUseItemFoodEvent(LivingEntityUseItemEvent.Finish event) {
+
+		ItemStack item = event.getItem();
+		EntityPlayer player = (EntityPlayer) event.getEntity();
+		if (player.getEntityWorld().isRemote)
+			return;
+
+		// 水入りビン
+		if (item.getItem() == Items.POTIONITEM && item.getItemDamage() == 0) {
+
+			player.addExhaustion(4.5f);
+			player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 30, 0));
+		}
+
+		// 魚
+		if (item.getItem() == Items.FISH) {
+
+			player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0));
+
+		}
+    	
     }
     
     /**

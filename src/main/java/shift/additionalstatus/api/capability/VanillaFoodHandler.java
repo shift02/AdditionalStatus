@@ -1,6 +1,5 @@
 package shift.additionalstatus.api.capability;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -9,7 +8,7 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import shift.additionalstatus.api.AdditionalStatusAPI;
 import shift.additionalstatus.api.capability.template.MoistureHandler;
-import shift.additionalstatus.capability.EntityPlayerManager;
+import shift.additionalstatus.api.capability.template.StaminaHandler;
 
 /**
  * バニラのアイテムにステータスを追加するためのHandler。<br>
@@ -21,7 +20,8 @@ import shift.additionalstatus.capability.EntityPlayerManager;
 public class VanillaFoodHandler {
 	
 	public ResourceLocation moisture = new ResourceLocation(AdditionalStatusAPI.MODID, "IMoistureHandler");
-
+	public ResourceLocation stamina = new ResourceLocation(AdditionalStatusAPI.MODID, "IStaminaHandler");
+	
 	/**バニラの食べ物に水分とスタミナのステータスを追加*/
 	@SubscribeEvent
 	public void addStatus(AttachCapabilitiesEvent.Item evt) {
@@ -35,9 +35,6 @@ public class VanillaFoodHandler {
         if (item == Items.POTIONITEM && item.getDamage(food) == 0) {
 
         	evt.addCapability(moisture, new MoistureHandler(3, 0, 0));
-            //SextiarySectorAPI.playerManager.addMoistureStats(player, 3, 0);
-            //player.addExhaustion(4.5f);
-            //player.addPotionEffect(new PotionEffect(Potion.hunger.getId(), 30, 0));
         }
 		
 		//きのこシチュー
@@ -46,6 +43,85 @@ public class VanillaFoodHandler {
         	evt.addCapability(moisture, new MoistureHandler(2, 2, 0));
         	
         }
+        
+        //鳥
+        if (item == Items.CHICKEN) {
+            evt.addCapability(moisture, new MoistureHandler(1, 0, 0));
+        }
+
+        if (item == Items.COOKED_CHICKEN) {
+
+        	evt.addCapability(moisture, new MoistureHandler(0, 0, 7.2f));
+        	evt.addCapability(stamina, new StaminaHandler(4, 2, 0));
+        }
+
+        //豚
+        if (item == Items.PORKCHOP) {
+
+        	evt.addCapability(moisture, new MoistureHandler(1, 0, 0));
+        }
+
+        if (item == Items.COOKED_PORKCHOP) {
+
+        	evt.addCapability(moisture, new MoistureHandler(0, 0, 8.2f));
+        	evt.addCapability(stamina, new StaminaHandler(5, 1, 0));
+        }
+
+        //牛
+        if (item == Items.BEEF) {
+
+        	evt.addCapability(moisture, new MoistureHandler(1, 0, 0));
+        }
+
+        if (item == Items.COOKED_BEEF) {
+
+        	evt.addCapability(moisture, new MoistureHandler(0, 0, 10.2f));
+        	evt.addCapability(stamina, new StaminaHandler(7, 4, 0));
+
+        }
+
+        //魚
+        if (item == Items.FISH) {
+
+        	evt.addCapability(moisture, new MoistureHandler(4, 2, 0));
+
+        }
+
+        if (item == Items.COOKED_FISH) {
+
+        	evt.addCapability(moisture, new MoistureHandler(0, 0, 5.2f));
+        	evt.addCapability(stamina, new StaminaHandler(6, 2, 0));
+
+        }
+
+        //リンゴ
+        if (item == Items.APPLE) {
+
+        	evt.addCapability(moisture, new MoistureHandler(1, 0.3f, 0));
+
+        }
+
+        //スイカ
+        if (item == Items.MELON) {
+
+        	evt.addCapability(moisture, new MoistureHandler(1, 1.0f, 0));
+
+        }
+
+        //パン
+        if (item == Items.BREAD) {
+
+        	evt.addCapability(moisture, new MoistureHandler(0, 0, 5.2f));
+        	evt.addCapability(stamina, new StaminaHandler(6, 4, 0));
+        }
+
+        //牛乳
+        if (item == Items.MILK_BUCKET) {
+
+        	evt.addCapability(moisture, new MoistureHandler(4, 4.0f, 0));
+
+        }
+
 		
 	}
 	

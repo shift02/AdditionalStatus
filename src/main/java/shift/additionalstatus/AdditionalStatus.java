@@ -4,7 +4,9 @@ import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
@@ -26,7 +28,7 @@ import shift.additionalstatus.proxy.CommonProxy;
 public class AdditionalStatus {
 
 	public static final String MODID = "AdditionalStatus";
-	public static final String VERSION = "1.0";
+	public static final String VERSION = "1.0.0";
 
 	@Mod.Instance("AdditionalStatus")
 	public static AdditionalStatus instance;
@@ -56,7 +58,6 @@ public class AdditionalStatus {
 		CapabilityMoistureHandler.register();
 		CapabilityStaminaHandler.register();
 
-
 		drinkingWaterBottle = new ItemDrink(4, 4, 0);
 		drinkingWaterBottle.setCreativeTab(CreativeTabs.FOOD);
 		drinkingWaterBottle.setMaxStackSize(1).setUnlocalizedName("as."+"drinking_water_bottle");
@@ -64,6 +65,8 @@ public class AdditionalStatus {
 		if (event.getSide().isClient()) {
             ModelLoader.setCustomModelResourceLocation(drinkingWaterBottle, 0, new ModelResourceLocation(MODID + ":" + "bottle_drinking_water", "inventory"));
         }
+
+		GameRegistry.addSmelting(new ItemStack(Items.POTIONITEM), new ItemStack(drinkingWaterBottle), 0.1f);
 
 	}
 

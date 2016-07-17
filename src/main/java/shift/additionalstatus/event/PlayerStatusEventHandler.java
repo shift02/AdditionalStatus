@@ -34,15 +34,15 @@ public class PlayerStatusEventHandler {
         ItemStack item = event.getItem();
         EntityPlayer player = (EntityPlayer) event.getEntity();
         if(player.getEntityWorld().isRemote)return;
-        
+
         if(!item.hasCapability(CapabilityMoistureHandler.MOISTURE_HANDLER_CAPABILITY, null))return;
-        
+
         IMoistureHandler m = item.getCapability(CapabilityMoistureHandler.MOISTURE_HANDLER_CAPABILITY, null);
         AdditionalStatusAPI.playerManager.addMoistureStats(player, m.getMoisture(), m.getMoistureSaturation());
         AdditionalStatusAPI.playerManager.addMoistureExhaustion(player, m.getMoistureExhaustion());
-        
+
     }
-    
+
     /**バニラの食べ物を食べた時の動作*/
 	/** 食べ物を食べた時の動作 */
     @SubscribeEvent
@@ -51,15 +51,15 @@ public class PlayerStatusEventHandler {
         ItemStack item = event.getItem();
         EntityPlayer player = (EntityPlayer) event.getEntity();
         if(player.getEntityWorld().isRemote)return;
-        
+
         if(!item.hasCapability(CapabilityStaminaHandler.STAMINA_HANDLER_CAPABILITY, null))return;
-        
+
         IStaminaHandler m = item.getCapability(CapabilityStaminaHandler.STAMINA_HANDLER_CAPABILITY, null);
         AdditionalStatusAPI.playerManager.addStaminaStats(player, m.getStamina(), m.getStaminaSaturation());
         AdditionalStatusAPI.playerManager.addStaminaExhaustion(player, m.getStaminaExhaustion());
-        
+
     }
-    
+
     @SubscribeEvent
     public void onPlayerUseItemFoodEvent(LivingEntityUseItemEvent.Finish event) {
 
@@ -81,9 +81,9 @@ public class PlayerStatusEventHandler {
 			player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0));
 
 		}
-    	
+
     }
-    
+
     /**
      * 水分関係
      */
@@ -155,7 +155,7 @@ public class PlayerStatusEventHandler {
 
         float i = 1;
 
-        if (BiomeDictionary.isBiomeOfType(player.worldObj.getBiomeGenForCoords(player.playerLocation), Type.SANDY)) {
+        if (BiomeDictionary.isBiomeOfType(player.worldObj.getBiomeGenForCoords(player.getPosition()), Type.SANDY)) {
             i = 2;
         }
 
@@ -245,7 +245,7 @@ public class PlayerStatusEventHandler {
 
         float i = 1;
 
-        if (BiomeDictionary.isBiomeOfType(player.worldObj.getBiomeGenForCoords(player.playerLocation), Type.SANDY)) {
+        if (BiomeDictionary.isBiomeOfType(player.worldObj.getBiomeGenForCoords(player.getPosition()), Type.SANDY)) {
             i = 2;
         }
 
@@ -300,5 +300,5 @@ public class PlayerStatusEventHandler {
         }
 
     }
-	
+
 }

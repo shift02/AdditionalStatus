@@ -26,7 +26,7 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "1.0"
+version = "1.10-" +  "1.0.0"
 group= "shift02.AdditionalStatus" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "AdditionalStatus"
 
@@ -67,6 +67,14 @@ dependencies {
 
 }
 
+jar {
+
+  manifest {
+    attributes 'FMLCorePlugin' : 'shift.additionalstatus.asm.ASCore','FMLCorePluginContainsFMLMod':'true'
+  }
+
+}
+
 processResources
 {
     // this will ensure that this task is redone when the versions change.
@@ -85,4 +93,14 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+task devJar(type: Jar) {
+    from sourceSets.main.output
+    from sourceSets.main.allSource
+    classifier = 'dev'
+}
+ 
+artifacts {
+    archives devJar
 }

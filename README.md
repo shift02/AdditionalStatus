@@ -14,3 +14,8 @@ This Mod adds the status of stamina and moisture to the player
 ##License ライセンス
 
 [![MMPL_J](https://img.shields.io/badge/license-MMPL__%20J-blue.svg)](http://tsoft-web.com/nokiyen/minecraft/modding/MMPL_J)
+
+##Link リンク
+
+- [Forum(フォーラム)](http://forum.minecraftuser.jp/viewtopic.php?f=13&t=31679)
+

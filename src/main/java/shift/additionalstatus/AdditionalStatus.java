@@ -1,9 +1,7 @@
 package shift.additionalstatus;
 
-import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -28,7 +26,7 @@ import shift.additionalstatus.proxy.CommonProxy;
 public class AdditionalStatus {
 
 	public static final String MODID = "AdditionalStatus";
-	public static final String VERSION = "1.0.0";
+	public static final String VERSION = "1.1.0";
 
 	@Mod.Instance("AdditionalStatus")
 	public static AdditionalStatus instance;

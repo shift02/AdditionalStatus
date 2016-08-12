@@ -10,6 +10,7 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import shift.additionalstatus.AdditionalStatus;
 import shift.additionalstatus.api.IPlayerManager;
 import shift.additionalstatus.packet.ASPacketHandler;
@@ -33,15 +34,15 @@ public class EntityPlayerManager implements IPlayerManager {
 	 * public static final Map<String, MoistureStats> moistureMap = new
 	 * HashMap<String, MoistureStats>(); public static final Map<String,
 	 * StaminaStats> staminaMap = new HashMap<String, StaminaStats>();
-	 * 
+	 *
 	 * public static final Map<String, Integer> lastMoistureLevel = new
 	 * HashMap<String, Integer>(); public static final Map<String, Boolean>
 	 * wasThirsty = new HashMap<String, Boolean>();
-	 * 
+	 *
 	 * public static final Map<String, Integer> lastStaminaLevel = new
 	 * HashMap<String, Integer>(); public static final Map<String, Boolean>
 	 * wasTired = new HashMap<String, Boolean>();
-	 * 
+	 *
 	 */
 
 	public static EntityPlayerManager instance = new EntityPlayerManager();
@@ -176,7 +177,7 @@ public class EntityPlayerManager implements IPlayerManager {
 			ASPacketHandler.INSTANCE.sendTo(new PacketPlayerData(this.getAdditionalPlayerData(event.player)),
 					(EntityPlayerMP) event.player);
 
-			// this.sendOtherPlayer(event.player);
+			//this.sendOtherPlayer(event.player);
 		}
 
 	}
@@ -190,10 +191,17 @@ public class EntityPlayerManager implements IPlayerManager {
 			ASPacketHandler.INSTANCE.sendTo(new PacketPlayerData(this.getAdditionalPlayerData(event.player)),
 					(EntityPlayerMP) event.player);
 
-			// this.sendOtherPlayer(event.player);
+			//this.sendOtherPlayer(event.player);
 		}
 
 	}
+
+	public void sendOtherPlayer(EntityPlayer player) {
+        //他のプレイヤーに送る
+        PacketPlayerData d = new PacketPlayerData(this.getAdditionalPlayerData(player));
+        d.getData().setString("uuid", player.getUniqueID().toString());
+        ASPacketHandler.INSTANCE.sendToAllAround(d, new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 64));
+    }
 
 
 }

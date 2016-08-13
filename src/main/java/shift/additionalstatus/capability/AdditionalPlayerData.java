@@ -23,9 +23,13 @@ public class AdditionalPlayerData implements IStorage<AdditionalPlayerData>, ICa
 	/** スタミナ */
 	private StaminaStats stamina;
 
+	/** 座る */
+	private SitStats sit;
+
 	public AdditionalPlayerData() {
 		this.moisture = new MoistureStats();
 		this.stamina = new StaminaStats();
+		this.sit = new SitStats();
 	}
 
 	public void onUpdateEntity(EntityPlayer entityPlayer) {
@@ -37,6 +41,8 @@ public class AdditionalPlayerData implements IStorage<AdditionalPlayerData>, ICa
 		this.moisture.onUpdate(entityPlayer);
 		this.stamina.onUpdate(entityPlayer);
 
+		this.sit.onUpdate(this,entityPlayer);
+
 	}
 
 	@Override
@@ -47,6 +53,8 @@ public class AdditionalPlayerData implements IStorage<AdditionalPlayerData>, ICa
 
 		this.stamina.writeNBT(nbt);
 
+		this.sit.writeNBT(nbt);
+
 		return nbt;
 	}
 
@@ -56,6 +64,9 @@ public class AdditionalPlayerData implements IStorage<AdditionalPlayerData>, ICa
 		this.moisture.readNBT(nbt);
 
 		this.stamina.readNBT(nbt);
+
+		this.sit.readNBT(nbt);
+
 	}
 
 	public MoistureStats getMoisture() {
@@ -72,6 +83,14 @@ public class AdditionalPlayerData implements IStorage<AdditionalPlayerData>, ICa
 
 	private void setStamina(StaminaStats stamina) {
 		this.stamina = stamina;
+	}
+
+	public SitStats getSit() {
+		return sit;
+	}
+
+	public void setSit(SitStats sit) {
+		this.sit = sit;
 	}
 
 	@Override

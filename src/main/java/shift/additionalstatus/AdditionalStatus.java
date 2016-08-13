@@ -26,7 +26,7 @@ import shift.additionalstatus.proxy.CommonProxy;
 public class AdditionalStatus {
 
 	public static final String MODID = "AdditionalStatus";
-	public static final String VERSION = "1.1.0";
+	public static final String VERSION = "1.2.0";
 
 	@Mod.Instance("AdditionalStatus")
 	public static AdditionalStatus instance;

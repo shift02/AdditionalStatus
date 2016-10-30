@@ -1,6 +1,8 @@
 /bin/
 build/
 
+gradle.properties
+
 # Eclipse
 .project
 .classpath

@@ -104,3 +104,15 @@ task devJar(type: Jar) {
 artifacts {
     archives devJar
 }
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            if (project.hasProperty('mavenfolder')) {    
+                repository(url: project.mavenfolder)
+            }else{
+                repository(url: uri('/docs/maven'))
+            }
+        }
+    }
+}

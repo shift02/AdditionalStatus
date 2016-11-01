@@ -13,6 +13,7 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'eclipse'
+apply plugin: 'maven'
 
 //ï∂éöÉRÅ[Éh
 tasks.withType(AbstractCompile)*.options*.encoding = tasks.withType(GroovyCompile)*.groovyOptions*.encoding = 'UTF-8'
@@ -26,9 +27,9 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "1.10.2-" +  "1.2.0"
-group= "shift02.AdditionalStatus" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "AdditionalStatus"
+version = "1.2.0"
+group= "shift02.additionalstatus" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "additionalstatus"
 
 minecraft {
     version = "1.10.2-12.18.1.2076"

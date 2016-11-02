@@ -28,7 +28,7 @@ plugins {
 }
 */
 version = "1.2.0"
-group= "shift02.additionalstatus" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group= "shift.additionalstatus" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "additionalstatus"
 
 minecraft {

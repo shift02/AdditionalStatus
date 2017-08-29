@@ -11,7 +11,7 @@ This Mod adds the status of stamina and moisture to the player
 
 このModはプレイヤーに水分とスタミナの概念を追加します
 
-##Dependency 依存関係(開発環境に追加する)
+## Dependency 依存関係(開発環境に追加する)
 
 Please describe the following in build.gradle
 
